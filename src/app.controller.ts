@@ -10,7 +10,7 @@ export class AppController {
 
   @Get('contract-address')
   getContractAddress() {
-    return { result: this.appService.getContractAddress() };
+    return { result: this.appService.getTokenContractAddress() };
   }
 
   @Get('token-name')
@@ -46,5 +46,10 @@ export class AppController {
   @Post('mint-tokens')
   async mintTokens(@Body() body: MintTokenDto) {
     return { result: await this.appService.mintTokens(body.address) };
+  }
+
+  @Get('ballot-winner')
+  async getWinnerName() {
+    return { result: await this.appService.getWinnerName() };
   }
 }
